@@ -10,7 +10,8 @@ function goBack(){
     mainPage.classList.add('hidden');
     building.innerHTML = '';
 }
-function onFormSubmit(){
+function onFormSubmit(e){
+    e.preventDefault();
     startingForm.classList.add('hidden');
     mainPage.classList.remove('hidden');
     generateBuilding(Number(liftInput.value), Number(floorInput.value));
