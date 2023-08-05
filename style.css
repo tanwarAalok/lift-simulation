@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+button{
+    cursor: pointer;
+    padding: 5px;
+}
+
+body{
+    height: 99vh;
+    width: 98vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at -8.9% 51.2%, rgb(255, 124, 0) 0%, rgb(255, 124, 0) 15.9%, rgb(255, 163, 77) 15.9%, rgb(255, 163, 77) 24.4%, rgb(19, 30, 37) 24.5%, rgb(19, 30, 37) 66%);
+}
+.hidden{
+    display: none !important;
+}
+
+/****************************************/
+
+.starting_form{
+    width: 400px;
+    background-color: #FFA34DFF;
+    border-radius: 10px;
+    color: rgb(19, 30, 37);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.starting_form > div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.starting_form input{
+    width: 100%;
+    padding: 5px;
+    border: 1px solid grey;
+}
+
+.starting_form button{
+    background-color: rgb(19, 30, 37);
+    color: whitesmoke;
+    border: 0;
+}
+
+/****************************************/
+
+.main_page{
+    width: 100%;
+    height: 100%;
+    color: whitesmoke;
+}
+.home_btn{
+    position: absolute;
+    top: 50px;
+    left: 100px;
+}
+.building{
+    border: 2px solid whitesmoke;
+    width: 70%;
+    margin: 3% 5% 5% 25%;
+    height: 90%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+.building :first-child{
+    border: none !important;
+}
+
+.floor{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 80px;
+    border-top: 2px solid whitesmoke;
+    position: relative;
+    gap: 10px;
+}
+
+.btn_wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    position: absolute;
+    left: 30px;
+}
+.floorLabel {
+    position: absolute;
+    right: 30px;
+}
+
+.lift{
+    height: 100%;
+    /*position: absolute;*/
+    background-color: yellow;
+    width: 100px;
+    /*height: 40px;*/
+}
