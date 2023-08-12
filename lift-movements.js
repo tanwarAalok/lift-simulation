@@ -2,6 +2,15 @@ let liftRequestQueue = [];
 let isMoving = false;
 
 function addRequestsToQueue(e){
+    const newFloor = e.target.getAttribute('floor');
+
+    //TODO: same request of same floor is being processed in the beginning
+    for(let req in liftRequestQueue){
+        if(liftRequestQueue[req].getAttribute('floor') === newFloor) {
+            console.log("already present")
+            return;
+        }
+    }
     e.target.classList.toggle('btn_toggle');
     liftRequestQueue.push(e.target);
     if(!isMoving) processQueueRequest();
