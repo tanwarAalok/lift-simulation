@@ -2,9 +2,8 @@ let liftRequestQueue = [];
 let isMoving = false;
 
 function addRequestsToQueue(e){
-    const floor = e.target.getAttribute('floor');
-    const direction = e.target.getAttribute('direction');
-    liftRequestQueue.push({nextFloor: floor, direction: direction});
+    e.target.classList.toggle('btn_toggle');
+    liftRequestQueue.push(e.target);
     if(!isMoving) processQueueRequest();
 }
 
@@ -17,11 +16,13 @@ function processQueueRequest() {
 
     isMoving = true;
 
-    const { nextFloor, direction } = liftRequestQueue.shift();
+    let nextFloorElement = liftRequestQueue.shift();
+    const nextFloor = nextFloorElement.getAttribute('floor');
 
     moveLift(nextFloor);
 
     setTimeout(() => {
+        nextFloorElement.classList.toggle('btn_toggle');
         toggleLiftDoor();
         setTimeout(() => {
             toggleLiftDoor();

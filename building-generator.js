@@ -32,17 +32,14 @@ function generateBuilding(liftCount, floorCount){
 
         let up_btn = document.createElement('button');
         let down_btn = document.createElement('button');
-        up_btn.classList.add('floor_btn');
-        down_btn.classList.add('floor_btn');
+
+        up_btn.classList.add('floor_btn', 'up_btn');
+        down_btn.classList.add('floor_btn', 'down_btn');
         up_btn.setAttribute('floor', floor);
         down_btn.setAttribute('floor', floor);
-        up_btn.setAttribute('direction', 'up');
-        down_btn.setAttribute('direction', 'down');
-        up_btn.onclick = () => addRequestsToQueue(event);
-        down_btn.onclick = () => addRequestsToQueue(event);
+        up_btn.onclick = (event) => addRequestsToQueue(event);
+        down_btn.onclick = (event) => addRequestsToQueue(event);
 
-        up_btn.textContent = 'Up';
-        down_btn.textContent = 'Down';
 
         if(floor !== floorCount) btn_wrapper.appendChild(up_btn);
         if(floor !== 0) btn_wrapper.appendChild(down_btn);

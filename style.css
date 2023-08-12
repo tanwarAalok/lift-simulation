@@ -5,7 +5,7 @@
 }
 button{
     cursor: pointer;
-    padding: 5px;
+    /*padding: 5px;*/
 }
 
 body{
@@ -70,7 +70,7 @@ body{
     flex-wrap: nowrap;
     flex-direction: column;
 }
-.building :first-child{
+.building > :first-child{
     border: none !important;
 }
 
@@ -100,7 +100,7 @@ body{
 .lift{
     height: 100%;
     position: relative;
-    background-color: yellow;
+    background-color: #777676;
     width: 100px;
     display: flex;
     justify-content: space-between;
@@ -110,9 +110,10 @@ body{
 .door {
     width: 50%;
     height: 100%;
-    background-color: #aaa;
+    background-color: whitesmoke;
     position: absolute;
     transition: transform 2.5s ease-in-out;
+    border: 0;
 }
 
 .left {
@@ -129,5 +130,25 @@ body{
 }
 
 .btn_toggle{
-    background-color: lightcyan;
+    background-color: cyan;
+}
+
+.floor_btn{
+    border-radius: 50%;
+    border: 0;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background-size: cover;
+}
+
+.up_btn{
+    background-image: url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_expand_less_48px-512.png");
+}
+.down_btn{
+    background-image: url("https://cdn3.iconfinder.com/data/icons/google-material-design-icons/48/ic_expand_more_48px-512.png");
+}
+
+.floor_btn:hover{
+    opacity: 0.9;
 }
