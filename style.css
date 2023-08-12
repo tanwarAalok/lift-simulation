@@ -99,8 +99,35 @@ body{
 
 .lift{
     height: 100%;
-    /*position: absolute;*/
+    position: relative;
     background-color: yellow;
     width: 100px;
-    /*height: 40px;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 2.5s ease;
+}
+.door {
+    width: 50%;
+    height: 100%;
+    background-color: #aaa;
+    position: absolute;
+    transition: transform 2.5s ease-in-out;
+}
+
+.left {
+    transform-origin: right;
+}
+
+.right {
+    right: 0;
+    transform-origin: left;
+}
+
+.door.open {
+    transform: scaleX(0);
+}
+
+.btn_toggle{
+    background-color: lightcyan;
 }
