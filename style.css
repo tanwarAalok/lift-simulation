@@ -49,12 +49,6 @@ body{
     border: 0;
 }
 
-@media only screen and (max-width: 600px) {
-    .starting_form{
-        width: 80vw;
-    }
-}
-
 /****************************************/
 
 .main_page{
@@ -75,17 +69,6 @@ body{
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
-}
-
-@media only screen and (max-width: 600px) {
-    .building{
-        width: 90%;
-        margin: 10vh 5%;
-    }
-    .home_btn{
-        top: 20px;
-        left: 20px;
-    }
 }
 
 .building > :first-child{
@@ -169,4 +152,22 @@ body{
 
 .floor_btn:hover{
     opacity: 0.9;
+}
+
+
+/******************************************************/
+
+@media screen and (max-width: 600px) {
+    .starting_form{
+        width: 80vw;
+    }
+
+    .building{
+        width: 90%;
+        margin: 10vh 5%;
+    }
+    .home_btn{
+        top: 20px;
+        left: 20px;
+    }
 }
