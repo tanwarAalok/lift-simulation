@@ -3,14 +3,16 @@ let floorInput = document.querySelector("#floor");
 let mainPage = document.querySelector(".main_page");
 let startingForm = document.querySelector(".starting_form");
 let building = document.querySelector(".building");
-
-let maxFloor, isBuildingGenerated = false;
+let liftsData = [];
+let liftRequestQueue = [];
+let maxFloor;
 
 function goBack(){
     startingForm.classList.remove('hidden');
     mainPage.classList.add('hidden');
     building.innerHTML = '';
-    // clearInterval(requestInterval)
+    liftsData = [];
+    liftRequestQueue = [];
 }
 function onFormSubmit(e){
     e.preventDefault();
@@ -18,11 +20,13 @@ function onFormSubmit(e){
     mainPage.classList.remove('hidden');
     maxFloor = floorInput.value;
     generateBuilding(Number(liftInput.value), Number(floorInput.value));
+    defaultLiftData();
+    console.log(liftsData)
 }
 
 function generateBuilding(liftCount, floorCount){
 
-    for(let floor = floorCount; floor >= 0; floor--){
+    for(let floor = floorCount; floor >= 0; floor--) {
         let floorElement = document.createElement('div');
         floorElement.classList.add('floor');
         floorElement.setAttribute('floor', floor);
@@ -41,18 +45,17 @@ function generateBuilding(liftCount, floorCount){
         down_btn.onclick = (event) => addRequestsToQueue(event);
 
 
-        if(floor !== floorCount) btn_wrapper.appendChild(up_btn);
-        if(floor !== 0) btn_wrapper.appendChild(down_btn);
+        if (floor !== floorCount) btn_wrapper.appendChild(up_btn);
+        if (floor !== 0) btn_wrapper.appendChild(down_btn);
 
         let floorLabel = document.createElement('h5');
         floorLabel.classList.add('floorLabel');
-        if(floor !== 0) floorLabel.textContent = `Floor ${floor}`;
-        else floorLabel.textContent = 'Ground Floor';
+        floorLabel.textContent = `Floor ${floor}`;
 
         floorElement.appendChild(btn_wrapper);
 
-        if(floor === 0){
-            for(let lift = 1; lift <= liftCount; lift++){
+        if (floor === 0) {
+            for (let lift = 1; lift <= liftCount; lift++) {
                 let liftElement = document.createElement('div');
                 liftElement.innerHTML = `
                     <div class="door left open"></div>
@@ -66,7 +69,17 @@ function generateBuilding(liftCount, floorCount){
         floorElement.appendChild(floorLabel);
         building.appendChild(floorElement);
     }
-    isBuildingGenerated = true;
+}
+
+function defaultLiftData(){
+    let allLifts = document.querySelectorAll('.lift');
+    for(let i = 0; i<allLifts.length; i++){
+        liftsData.push({
+            liftElement: allLifts[i],
+            floor: 0,
+            isMoving: false
+        })
+    }
 }
 
 
