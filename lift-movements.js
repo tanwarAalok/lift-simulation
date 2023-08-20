@@ -66,8 +66,8 @@ function processQueueRequest() {
             setTimeout(() => {
                 updateLiftData(liftElement, false, nextFloor);
                 processQueueRequest(); // Move to the next request after animations
-            }, 2000); // Door closing animation time
-        }, 2000); // Door opening animation time
+            }, 2500); // Door closing animation time
+        }, 2500); // Door opening animation time
     }, 2000*floorDiff); // Time to wait before starting animation sequence
 }
 
