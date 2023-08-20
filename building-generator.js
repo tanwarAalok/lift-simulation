@@ -21,7 +21,6 @@ function onFormSubmit(e){
     maxFloor = floorInput.value;
     generateBuilding(Number(liftInput.value), Number(floorInput.value));
     defaultLiftData();
-    console.log(liftsData)
 }
 
 function generateBuilding(liftCount, floorCount){
@@ -62,6 +61,8 @@ function generateBuilding(liftCount, floorCount){
                     <div class="door right open"></div>
                 `;
                 liftElement.classList.add('lift');
+                // liftElement.setAttribute('currentFloor', floor);
+                // liftElement.setAttribute('isMoving', false);
                 floorElement.appendChild(liftElement);
             }
         }

@@ -21,7 +21,7 @@ function chooseLift(nextFloor){
     notMovingLifts.sort((a, b) => {
         return Math.abs(nextFloor-a.floor) - Math.abs(nextFloor - b.floor);
     })
-    return notMovingLifts[0].liftElement;
+    return notMovingLifts[0];
 }
 
 function updateLiftData(liftElement, isMoving, floor){
@@ -39,8 +39,8 @@ function processQueueRequest() {
         return;
     }
 
-    let liftElement = chooseLift(liftRequestQueue[0].getAttribute('floor'));
-    if(liftElement === null){
+    let liftChoice = chooseLift(liftRequestQueue[0].getAttribute('floor'));
+    if(liftChoice === null){
         console.log("No free lifts");
         return setTimeout(() => {
             console.log("Calling again");
@@ -48,12 +48,15 @@ function processQueueRequest() {
         }, 5000);
     }
 
+    let {liftElement, floor: currFloor, isMoving} = chooseLift(liftRequestQueue[0].getAttribute('floor'));
+
     let nextFloorElement = liftRequestQueue.shift();
-    const nextFloor = nextFloorElement.getAttribute('floor');
+    const nextFloor = Number(nextFloorElement.getAttribute('floor'));
 
     updateLiftData(liftElement, true, nextFloor);
 
-    moveLift(nextFloor, liftElement);
+    const floorDiff = Math.abs(nextFloor - currFloor)
+    moveLift(floorDiff, nextFloor, liftElement);
 
     setTimeout(() => {
         nextFloorElement.classList.toggle('btn_toggle');
@@ -63,9 +66,9 @@ function processQueueRequest() {
             setTimeout(() => {
                 updateLiftData(liftElement, false, nextFloor);
                 processQueueRequest(); // Move to the next request after animations
-            }, 2500); // Door closing animation time
-        }, 2500); // Door opening animation time
-    }, 2500); // Time to wait before starting animation sequence
+            }, 2000); // Door closing animation time
+        }, 2000); // Door opening animation time
+    }, 2000*floorDiff); // Time to wait before starting animation sequence
 }
 
 function toggleLiftDoor(liftElement){
@@ -74,9 +77,10 @@ function toggleLiftDoor(liftElement){
         doors[i].classList.toggle("open");
     }
 }
-function moveLift(nextFloor, liftElement){
+function moveLift(floorDiff, nextFloor, liftElement){
     if(nextFloor > maxFloor || nextFloor < 0) return;
     const liftHeight = liftElement.firstElementChild.offsetHeight;
     liftElement.style.transform = `translateY(-${nextFloor * (liftHeight + 2)}px)`
+    liftElement.style.transition = `transform ${2 * floorDiff}s ease`;
 }
 

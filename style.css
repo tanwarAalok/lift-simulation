@@ -106,7 +106,7 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: transform 2.5s ease;
+    /*transition: transform 2.5s ease;*/
 }
 .door {
     width: 50%;
@@ -137,8 +137,8 @@ body{
 .floor_btn{
     border-radius: 50%;
     border: 0;
-    width: 30px;
-    height: 30px;
+    width: 1.5rem;
+    height: 1.5rem;
     cursor: pointer;
     background-size: cover;
 }
@@ -164,10 +164,16 @@ body{
 
     .building{
         width: 90%;
-        margin: 10vh 5%;
+        margin: 10vh 5% 2vh 5%;
+        height: 88vh;
     }
     .home_btn{
         top: 20px;
         left: 20px;
+    }
+
+    .floor_btn{
+        width: 1rem;
+        height: 1rem;
     }
 }
